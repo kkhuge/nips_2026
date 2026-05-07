@@ -54,13 +54,17 @@ Run `generate_dirichlet_niid_0.1.py` and `generate_dirichlet_niid_0.5.py` to obt
 
  The num_class in ```src/models/resnet.py``` is set to 10, 100, 200 for CIFAR-10, CIFAR-100, Tiny-ImageNet dataset.
 
- ## Improvements on General FL Optimizers
+ ## Theoretical Validation and Comparison with Full-Model Optimizers
 
- Run `main.py` using the `fedavg5` trainer for 550 `num_round` to evaluate FedAvg and our FedForth algorithm. You can switch between algorithms by modifying the conditional statement in the LrdWorker class (src/models/worker.py): use ```if round_i < 550:``` for FedAvg and ```if round_i < 450:``` for FedForth.
+ Run `main.py` using the `fedavg5` trainer for 550 `num_round` with setting the conditional statement as ```if round_i < 450:``` in LrdWorker class (src/models/worker.py) and save the loss data when round_i > 450 (Stage 2) to obtain Figure 1
 
- Run `main.py` using the `fedavg6` trainer for 550 `num_round` to evaluate FedProx and our FedForth algorithm. You can switch between algorithms by modifying the conditional statement in the ProxWorker class (src/models/worker.py): use ```if round_i < 550:``` for FedProx and ```if round_i < 450:``` for FedForth.
+ Run `main.py` using the `fedavg5` trainer for 500 `num_round` to evaluate FedAvg and our FedForth algorithm. You can switch between algorithms by modifying the conditional statement in the LrdWorker class (src/models/worker.py): use ```if round_i < 500:``` for FedAvg and ```if round_i < 450:``` for FedForth.
 
- Run `main.py` using the `scaffold` trainer for 550 `num_round` to evaluate SCAFFOLD and our FedForth algorithm. You can switch between algorithms by modifying the conditional statement in the ScaffoldWorker class (src/models/worker.py): use ```if round_i < 550:``` for SCAFFOLD and ```if round_i < 450:``` for FedForth.
+ Run `main.py` using the `fedavg6` trainer for 500 `num_round` to evaluate FedProx and our FedForth algorithm. You can switch between algorithms by modifying the conditional statement in the ProxWorker class (src/models/worker.py): use ```if round_i < 500:``` for FedProx and ```if round_i < 450:``` for FedForth.
+
+ Run `main.py` using the `scaffold` trainer for 500 `num_round` to evaluate SCAFFOLD and our FedForth algorithm. You can switch between algorithms by modifying the conditional statement in the ScaffoldWorker class (src/models/worker.py): use ```if round_i < 500:``` for SCAFFOLD and ```if round_i < 450:``` for FedForth.
+
+ Run `main.py` using the `fedgf` trainer for 500 `num_round` to evaluate FedGF and our FedForth algorithm. You can switch between algorithms by modifying the conditional statement in the FedGFWorker class (src/models/worker.py): use ```if round_i < 500:``` for FedGFWorker and ```if round_i < 450:``` for FedForth.
 
  ## Comparison with Readout-Enhancement Methods
 
