@@ -66,11 +66,9 @@ Run `generate_dirichlet_niid_0.1.py` and `generate_dirichlet_niid_0.5.py` to obt
 
  Run `main.py` using the `fedgf` trainer for 500 `num_round` to evaluate FedGF and our FedForth algorithm. You can switch between algorithms by modifying the conditional statement in the FedGFWorker class (src/models/worker.py): use ```if round_i < 500:``` for FedGFWorker and ```if round_i < 450:``` for FedForth.
 
- ## Comparison with Readout-Enhancement Methods
+ ## Comparison with Decoupling Methods
 
 Run `main.py` using the `feduv` trainer for 500 `num_round` with `resnet_uv` model to evaluate FedUV while using the `fedetf` trainer for 500 `num_round` with `resnet_etf` model to evaluate FedETF.
-
-## Comparison with Two-Stage Methods
 
 Run `main.py` using the `boontk` trainer with 1 `num_epoch` to evaluate TCT while using the `ccvr` trainer with 1 `num_epoch` to evaluate CCVR. For the TCT experiments (TCT$_x$), you must update `boontk.py` to align with the multiplier $x$. Specifically, initialize the linear head as `theta_global = torch.zeros(512*x, 200).cuda()` and set the `subsample_size` to $512 \times x$ in compute_eNTK function.
 
