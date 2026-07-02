@@ -30,9 +30,6 @@ class ImageDataset(object):
 
 
 def main():
-    # --------------------
-    # 修改为 CIFAR-100
-    # --------------------
     print('>>> Get CIFAR-100 data.')
     transform = transforms.Compose([transforms.ToTensor()])
 
@@ -73,7 +70,7 @@ def main():
 
     for user in range(NUM_USER):
         for i in range(num_classes):
-            # CIFAR100: 每类 500 张训练图
+            # CIFAR100:
             num_train = np.round(distribution[i][user] * (500 - 10)).astype(int)
 
             # Train allocation
@@ -82,7 +79,7 @@ def main():
             cifar_traindata[i] = cifar_traindata[i][num_train:]
             train_y[user].extend(np.ones(num_train) * i)
 
-            # Test allocation: 每用户每类分 1 张
+            # Test allocation: 
             if len(cifar_testdata[i]) > 0:
                 test_X[user].append(cifar_testdata[i][0].tolist())
                 cifar_testdata[i] = cifar_testdata[i][1:]
