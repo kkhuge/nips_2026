@@ -33,7 +33,7 @@ plot_learning('result_acc/fedavg5/acc_testcifar100_all_data_1_dirichlet_niid_0.1
 #
 
 
-# 其他设置
+# Other settings.
 ax.set_xlim([0, 600])
 ax.set_ylim([0, 0.7])
 ax.set_xticks(np.arange(0,700,100))

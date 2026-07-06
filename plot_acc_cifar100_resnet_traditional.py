@@ -8,7 +8,7 @@ matplotlib.rc('font', size=12)
 
 
 def plot_learning(result_dir, ax, smooth=1, interval=1, **kwargs):
-    # 加载一维数据
+    # Load one-dimensional data.
     data = np.load(result_dir,allow_pickle=True)
     if smooth > 1:
         data = np.convolve(data, np.ones(smooth) / smooth, mode='valid')
